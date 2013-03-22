@@ -33,7 +33,7 @@ Treasy is meant to be easy. First, have some parent-child related data you want 
             }
         }
 
-Make a block element to hold the tree:
+Make a block element to hold the tree. The element should have a `name` attribute, this will be used in all of the treasy input tags.
 
     <form id="tree" name="tree"></form>
 
@@ -42,6 +42,50 @@ Call treasy:
     $('#tree').treasy(tree_data)
 
 That's it! Please see [Treasy Demo](doc/demo.html) for a demo and more information.
+
+## Output and Public Methods
+A single Treasy node looks like this:
+
+    <div class="tree-node">
+        <span class="toggle"></span>
+        <label class="checkbox inline">
+            <input name="tree2[11]" type="checkbox">node 11
+        </label>
+    </div>
+
+### Methods
+
+Call methods with `$ele.treasy('method', arg1, arg2, ...)`
+
+####`init(data)` or `$ele.treasy(data)`
+Initialize a treasy element. `data` is the tree data.
+####`get_selected_ids()`
+Return an array of the ids of the selected items.
+####`get_selected_values()`
+Return an array of the values of the selected items.
+####`list_selected(join)`
+If `join` is defined, it returns a string of all selected item values with `join` as the delimiter. If `join` is not defined, returns the array
+####`collapse_node($nodes)`
+Collapse the specified node(s).
+####`expand_node($nodes)`
+Expand the specified node(s).
+####`get_tree(data, level)`
+Called recursively to get the branches of the tree. Argument `level` is the depth of the branch, level 0 is root.
+####`reveal_all_checked()`
+Expose all checked nodes by expanding all of their parents.
+####`show_all()`
+Expand all nodes.
+####`hide_all()`
+Collapse all nodes
+####`disable()`
+Disable expansion and collapse of nodes.
+####`enable()`
+Enable expansion and collapse of nodes.
+####`is_disabled()`
+Return whether expanding/collapsing is currently disabled.
+
+
+
 
 
 ##### License [from "Simplified BSD License"]:

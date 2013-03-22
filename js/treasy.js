@@ -56,12 +56,12 @@
         },
         get_selected_ids : function() {
             var ids = [];
-            $.each(this.find(':checked').parent(), function() { ids.push($(this).data('id')) });
+            $.each(this.find(':checked').parent().parent(), function() { ids.push($(this).data('id')) });
             return ids;
         },
         get_selected_values : function() {
             var ids = [];
-            $.each(this.find(':checked').parent(), function() {
+            $.each(this.find(':checked').parent().parent(), function() {
                 var node_path = "";
                 node_path += $(this).data('value');
                 $.each($(this).parents('.tree-node'), function() {
@@ -98,7 +98,7 @@
                 level = 0;
             }
 
-            var $tree = $('<div class="tree-node">' + data.name + '</div>');
+            var $tree = $('<div class="tree-node"></div>');
             $tree.data('id', data.id);
             $tree.data('value', data.name);
             if(level != 0) {
@@ -108,7 +108,9 @@
             if(data.selected) {
                 $input.attr('checked', 'checked');
             }
-            $tree.prepend($input);
+            var $label = $('<label class="checkbox inline">' + encode_html_entities(data.name) + '</label>');
+            $label.prepend($input);
+            $tree.prepend($label);
 
             if(data.children) {
                 $tree.prepend($('<span class="toggle" data-expanded="0">' + right_arrow + '</span>'));
@@ -125,7 +127,7 @@
         },
         reveal_all_checked : function() {
             var $this_tree = this;
-            $.each(this.find(':checked').parent(), function() {
+            $.each(this.find(':checked').parent().parent(), function() {
                 var $this = $(this);
                 $this_tree.treasy('expand_node', $this.parents('.tree-node'));
             })
@@ -166,6 +168,13 @@
                 $this_tree.treasy('expand_node', $this.parent())
             }
         });
+    };
+    // Encode/decode htmlentities
+    var encode_html_entities = function(str){
+        return $("<div/>").text(str).html().replace(' ', '&nbsp;');
+    }
+    var decode_html_Entities = function(str){
+        return $("<div/>").html(str).text().replace('&nbsp;', ' ');
     }
 
     jQuery.fn.treasy = function(method) {
