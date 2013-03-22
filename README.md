@@ -2,7 +2,7 @@
 
 Treasy is a jQuery extension that takes hierarchical data and displays it as a expandable/collapsable tree.
 
-## Usage:
+## Intro:
     $('#element').treasy(data);
 
 Treasy is a jQuery plugin that takes hierarchical data and creates a form-friendly tree with checkboxes to select nodes. The branches of the tree are expandable and collapsible, and
@@ -10,6 +10,39 @@ Treasy is a jQuery plugin that takes hierarchical data and creates a form-friend
 Tree data nodes should have `name` properties. Properties `children` and `id` are technically optional, but ids are generally useful for collecting data, and a tree without child nodes is hardly a tree.
 
 More information is available in the [Treasy Demo](doc/demo.html).
+
+## Setup
+Treasy is meant to be easy. First, have some parent-child related data you want to show in a tree. Tree data is structured like this:
+
+    var tree_data = {
+        node1 : {
+            id : "1",
+            name : "node 1",
+            selected: 1,
+            children : {
+                node11 : {
+                    id : "11",
+                    name : "node 11",
+                    selected: 0
+                },
+                node12 : {
+                    id : "12",
+                    name : "node 12",
+                    selected: 0
+                }
+            }
+        }
+
+Make a block element to hold the tree:
+
+    <form id="tree" name="tree"></form>
+
+Call treasy:
+
+    $('#tree').treasy(tree_data)
+
+That's it! Please see [Treasy Demo](doc/demo.html) for a demo and more information.
+
 
 ##### License [from "Simplified BSD License"]:
  Copyright (c) 2013, Ted Olsen
