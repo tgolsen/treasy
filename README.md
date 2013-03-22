@@ -88,7 +88,7 @@ Return whether expanding/collapsing is currently disabled.
 
 
 
-##### License [from "Simplified BSD License"]:
+### License [from "Simplified BSD License"]:
  Copyright (c) 2013, Ted Olsen
  All rights reserved.
 
