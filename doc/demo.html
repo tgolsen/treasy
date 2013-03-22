@@ -1,0 +1,130 @@
+<html>
+<head>
+	<title>Treasy Demo</title>
+
+	 <!-- These styles and scripts not needed for treasy, just used for demo page -->
+	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+	<link href="../css/treasy.css" rel="stylesheet">
+	<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+	<style type="text/css">
+		pre.prettyprint{
+			height: 300px;
+			overflow: scroll;
+			font-size: 11px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row-fluid">
+			<div class="span12">
+				<h1 class="text-center">Treasy Demo</h1>
+				<p class="lead text-center">Treasy is a jQuery extension that takes hierarchical data and displays it as a expandable/collapsable tree.</p>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+				<section>
+					<div class="page-header"><h2>Intro</h2></div>
+					<p><strong>Treasy</strong> is a jQuery plugin that takes hierarchical data and creates a form-friendly tree with checkboxes to select nodes. The branches of the tree are expandable and collapsible, and </p>
+					<p>Tree data nodes should have <code>name</code> properties. Properties <code>children</code> and <code>id</code> are technically optional, but ids are generally useful for collecting data, and a tree without child nodes is hardly a tree.</p>
+				</section>
+				<section>
+					<div class="page-header"><h2>Setup</h2></div>
+					<p>Treasy is meant to be easy. First, have some parent-child related data you want to show in a tree. Sample tree data:</p>
+					<pre id="tree_data" class="prettyprint"></pre>
+
+					<p>Make a block element to hold the tree:</p>
+					<pre>&lt;form id=&quot;tree&quot; name=&quot;tree&quot;&gt;&lt;/form&gt;</pre>
+
+					<p>Show it in a treasy:</p>
+					<pre>$('#tree').treasy(tree_data)</pre>
+
+					<p>That's it!</p>
+					<div class="well">
+						<strong>My Tree</strong>
+						<form id="tree" name="tree"></form>
+					</div>
+				</section>
+				<section>
+					<h2>Additional functions</h2>
+					<p>Try some treasy functions:</p>
+					<div style="min-height: 413px">
+						<div class="well">
+							<strong>My Tree</strong>
+							<div>
+								<a class="btn btn-mini" href="javascript: $('#tree2').treasy('show_all');$('#tree2_out').text('')">show_all()</a>
+								<a class="btn btn-mini" href="javascript: $('#tree2').treasy('hide_all');$('#tree2_out').text('')">hide_all()</a>
+								<a class="btn btn-mini" href="javascript: $('#tree2').treasy('reveal_all_checked');$('#tree2_out').text('')">reveal_all_checked()</a>
+								<a class="btn btn-mini" href="javascript: $('#tree2_out').text($('#tree2').treasy('get_selected_ids'))">get_selected_ids()</a>
+								<a class="btn btn-mini" href="javascript: $('#tree2_out').text($('#tree2').treasy('list_selected', ', '))">list_selected(', ')</a>
+								<a class="btn btn-mini" href="javascript: $('#tree2_out').text($('#tree2').treasy('list_selected', '|'))">list_selected('|')</a>
+							</div>
+							<div><small>output:</small> <pre id="tree2_out" type="text"/></pre></div>
+							<form id="tree2" name="tree2"></form>
+						</div>
+					</div>
+
+					<p>Treasy checkboxes are easy to manipulate the same way as a form:</p>
+					<div style="min-height: 455px">
+						<div class="well">
+							<strong>My Tree</strong>
+							<p>
+								<small>jQuery:</small>
+								<a class="btn btn-mini" href="javascript: $('#tree3 input[type=checkbox]').prop('checked',true);$('#tree3_out').text('')">$('#tree3 input[type=checkbox]').prop('checked',true)</a>
+								<a class="btn btn-mini" href="javascript: $('#tree3 input[type=checkbox]').prop('checked',false);$('#tree3_out').text('')">$('#tree3 input[type=checkbox]').prop('checked',false)</a>
+								<a class="btn btn-mini" href="javascript: $('#tree3_out').text($('#tree3').serialize())">$('#tree3').serialize()</a>
+							</p>
+							<p>
+								<small>treasy:</small>
+								<a class="btn btn-mini" href="javascript: $('#tree3').treasy('show_all');$('#tree3_out').text('')">show_all()</a>
+								<a class="btn btn-mini" href="javascript: $('#tree3').treasy('hide_all');$('#tree3_out').text('')">hide_all()</a>
+								<a class="btn btn-mini" href="javascript: $('#tree3').treasy('reveal_all_checked');$('#tree3_out').text('')">reveal_all_checked()</a>
+								<a class="btn btn-mini" href="javascript: $('#tree3_out').text($('#tree3').treasy('get_selected_ids'))">get_selected_ids()</a>
+								<a class="btn btn-mini" href="javascript: $('#tree3_out').text($('#tree3').treasy('list_selected', ', '))">list_selected(', ')</a>
+								<a class="btn btn-mini" href="javascript: $('#tree3_out').text($('#tree3').treasy('list_selected', '|'))">list_selected('|')</a>
+							</p>
+							<div><small>output:</small> <pre id="tree3_out" type="text"/></pre></div>
+							<form id="tree3" name="tree3"></form>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row-fluid">
+			<div class="span12">
+				<small>&copy; Ted Olsen 2013</small>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Treasy requires jQuery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+
+	<!-- Demo page uses Bootstrap -->
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
+	<!-- Include Treasy -->
+	<script type="text/javascript" src="../js/treasy.js"></script>
+	<!-- Get data -->
+	<script type="text/javascript">
+		// You have some hierarchical data
+		var tree_data_text = '{\n	node1 : {\n		id : "1",\n		name : "node 1",\n		selected: 1,\n		children : {\n			node11 : {\n				id : "11",\n				name : "node 11",\n				selected: 0\n			},\n			node12 : {\n				id : "12",\n				name : "node 12",\n				selected: 0\n			},\n			node13 : {\n				id : "13",\n				name : "node 13",\n				selected: 0\n			},\n			node14 : {\n				id : "14",\n				name : "node 14",\n				selected: 0\n			},\n			node15 : {\n				id : "15",\n				name : "node 15",\n				selected: 0\n			},\n			node16 : {\n				id : "16",\n				name : "node 16",\n				selected: 0\n			}\n		}\n	},\n	node2 : {\n		id : "2",\n		name : "node 2",\n		selected: 0,\n		children : {\n			node21 : {\n				id : "21",\n				name : "node 21",\n				selected: 0,\n				children : {\n					node211: {\n						id : "211",\n						name : "node 211",\n						selected: 0,\n						children : {\n							node2111 : {\n								id : "2111",\n								name : "node 2111",\n								selected: 0,\n								children : {\n									deepnode : {\n										id : "deep",\n										name : "deep node",\n										selected: 1\n									}\n								}\n							}\n						}\n					}\n				}\n			},\n			node22 : {\n				id : "22",\n				name : "node 22",\n				selected: 0\n			}\n		}\n	}\n}',
+			tree_data = eval('(' + tree_data_text + ')')
+	</script>
+	<!-- Treasy -->
+	<script type="text/javascript">
+		// Show the data as text
+		$('#tree_data').text("var tree_data = " + tree_data_text)
+
+		// Show it in a treasy
+		$('#tree').treasy(tree_data)
+		$('#tree2').treasy(tree_data)
+		$('#tree3').treasy(tree_data)
+	</script>
+</body>
+</html>

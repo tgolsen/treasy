@@ -1,0 +1,25 @@
+.tree-holder{
+    width: 100%;
+}
+.tree-node:nth-child(odd) {
+    background-color: #fff;
+}
+.tree-node:nth-child(even) {
+    background-color: #eee;
+}
+.tree-holder>.tree-node {
+    margin-left: 0;
+}
+.tree-node {
+    border-left: solid 1px #ddd;
+    margin-left: 20px;
+}
+.tree-node input[type=checkbox] {
+    width: 16px;
+}
+.tree-node .toggle,
+.tree-node .no-toggle {
+    display: inline-block;
+    width: 16px;
+    cursor: pointer;
+}
