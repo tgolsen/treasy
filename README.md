@@ -9,7 +9,7 @@ Treasy is a jQuery plugin that takes hierarchical data and creates a form-friend
 
 Tree data nodes should have `name` properties. Properties `children` and `id` are technically optional, but ids are generally useful for collecting data, and a tree without child nodes is hardly a tree.
 
-More information is available in the [Treasy Demo](doc/demo.html).
+More information is available in the [Treasy Demo in the demo folder](doc/demo.html) or [online](http://doingeverythingright.com/assets/projects/treasy/doc/demo.html).
 
 ## Setup
 Treasy is meant to be easy. First, have some parent-child related data you want to show in a tree. Tree data is structured like this:
