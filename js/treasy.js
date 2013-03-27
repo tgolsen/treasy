@@ -140,7 +140,7 @@
             })
         },
         hide_all : function() {
-            this.treasy('collapse_node', $('.tree-node'));
+            this.treasy('collapse_node', this.find('.tree-node'));
         },
         enable : function() {
             this.data('disabled', 0);
